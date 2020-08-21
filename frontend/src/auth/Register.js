@@ -1,10 +1,11 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Alert from '../components/layouts/alert';
 import { setAlert } from '../redux/actions/alertAction';
+import { register } from '../redux/actions/authAction';
 
-const Register = ({ setAlert }) => {
+const Register = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -20,14 +21,14 @@ const Register = ({ setAlert }) => {
     if (password !== password2) {
       setAlert('password not match');
     } else {
-      console.log(formData);
+      register({ username, email, password });
     }
   };
 
   const { username, email, password, password2 } = formData;
 
   return (
-    <div>
+    <div style={{ marginTop: '100px' }}>
       <Alert />
       <form onSubmit={onSubmit}>
         <div className='grid grid-cols-12 gap-4'>
@@ -88,10 +89,11 @@ const Register = ({ setAlert }) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   state: state,
 });
 
-export default connect(mapStateToProps, { setAlert })(Register);
+export default connect(mapStateToProps, { setAlert, register })(Register);
