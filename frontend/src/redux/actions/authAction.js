@@ -28,7 +28,7 @@ export const loadUser = () => async (dispatch) => {
 };
 
 // Register User
-export const register = (formData) => async (dispatch) => {
+export const registerUser = (formData, history) => async (dispatch) => {
   try {
     const res = await axios.post(
       'http://localhost:5000/api/auth/register',
@@ -38,6 +38,14 @@ export const register = (formData) => async (dispatch) => {
       type: REGISTER_SUCCESS,
       payload: res.data,
     });
+
+    dispatch(setAlert('Register success', 'success'));
+
+    setTimeout(function () {
+      history.push('/login')
+    }, 3000);
+
+    // 
   } catch (err) {
     const errors = err.response.data.errors;
 

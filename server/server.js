@@ -14,5 +14,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/product', require('./routes/product'));
+app.use('/api/room', require('./routes/room'));
 
 app.listen(5000);
