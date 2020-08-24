@@ -1,13 +1,15 @@
 import React, { useState, Fragment } from 'react';
-import { useForm } from "react-hook-form";
-import { Redirect, Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form';
+import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Alert from '../components/layouts/alert';
 import { setAlert } from '../redux/actions/alertAction';
 import { registerUser } from '../redux/actions/authAction';
-import Logo from '../assets/images/logo.png'
-import ButtonSuccess from '../components/buttons/Success'
+import Logo from '../assets/images/logo.png';
+import ButtonSuccess from '../components/buttons/Success';
+import Avatar from '@material-ui/core/Avatar';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const Register = ({ setAlert, registerUser, isAuthenticated, history }) => {
   const { register, handleSubmit, watch, errors } = useForm();
@@ -23,9 +25,9 @@ const Register = ({ setAlert, registerUser, isAuthenticated, history }) => {
 
   const onSubmit = async (data, e) => {
     e.preventDefault();
-    console.log(data)
+    console.log(data);
     // await registerUser(data, history);
-  }
+  };
 
   const { username, email, password, password2 } = formData;
 
@@ -35,14 +37,23 @@ const Register = ({ setAlert, registerUser, isAuthenticated, history }) => {
 
   return (
     <Fragment>
-      <div className="w-full bg-gray-200 h-screen pt-48"  >
-        <form onSubmit={handleSubmit(onSubmit)} >
-          <div className="p-6 bg-white w-1/4 mx-auto shadow-xl">
-            <img src={Logo} style={{ width: '100px' }} className="mx-auto my-4" />
+      <div className='w-full bg-gray-200 h-screen pt-48'>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className='p-6 bg-white w-1/4 mx-auto shadow-xl'>
+            <Avatar
+              style={{
+                margin: 'auto',
+                backgroundColor: '#ffd700',
+                margin: '10px auto 20px auto',
+              }}
+            >
+              <LockOutlinedIcon />
+            </Avatar>
             <Alert />
-            <div className="inline-block w-full mb-3">
+            <div className='inline-block w-full mb-3'>
               <label>Username</label>
-              <input className={`border w-full py-2 px-2 mt-2 focus:outline-none rounded-none 
+              <input
+                className={`border w-full py-2 px-2 mt-2 focus:outline-none rounded-none 
               focus:border-${errors.username ? 'red' : 'blue'}-500 
               ${errors.username ? 'border-red-500' : ''}`}
                 name='username'
@@ -50,11 +61,14 @@ const Register = ({ setAlert, registerUser, isAuthenticated, history }) => {
                 onChange={onChange}
                 ref={register({ required: true })}
               />
-              {errors.username && <span className="text-red-600">This field is required</span>}
+              {errors.username && (
+                <span className='text-red-600'>This field is required</span>
+              )}
             </div>
-            <div className="inline-block w-full mb-3">
+            <div className='inline-block w-full mb-3'>
               <label>Email</label>
-              <input className="border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500"
+              <input
+                className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500'
                 name='email'
                 value={email}
                 onChange={onChange}
@@ -62,53 +76,64 @@ const Register = ({ setAlert, registerUser, isAuthenticated, history }) => {
                   required: 'This field is required',
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "invalid email address"
-                  }
+                    message: 'invalid email address',
+                  },
                 })}
               />
-              {errors.email && <span className="text-red-600">{errors.email.message}</span>}
+              {errors.email && (
+                <span className='text-red-600'>{errors.email.message}</span>
+              )}
             </div>
-            <div className="inline-block w-full mb-3">
+            <div className='inline-block w-full mb-3'>
               <label>Password</label>
-              <input className="border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500"
-                type="text"
+              <input
+                className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500'
+                type='text'
                 name='password'
                 value={password}
                 onChange={onChange}
                 ref={register({
-                  required: "You must specify a password",
+                  required: 'You must specify a password',
                   minLength: {
                     value: 6,
-                    message: "Password must have at least 8 characters"
-                  }
+                    message: 'Password must have at least 8 characters',
+                  },
                 })}
               />
-              {errors.password && <span className="text-red-600">{errors.password.message}</span>}
+              {errors.password && (
+                <span className='text-red-600'>{errors.password.message}</span>
+              )}
             </div>
-            <div className="inline-block w-full mb-3">
+            <div className='inline-block w-full mb-3'>
               <label>Confirm Password</label>
-              <input className="border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500"
-                type="text"
+              <input
+                className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500'
+                type='text'
                 name='password2'
                 value={password2}
                 onChange={onChange}
                 ref={register({
-                  validate: (value) => value === watch('password') || 'Error matcg'
+                  validate: (value) =>
+                    value === watch('password') || 'Error matcg',
                 })}
               />
-              {errors.password2 && <span className="text-red-600">{errors.password2.message}</span>}
+              {errors.password2 && (
+                <span className='text-red-600'>{errors.password2.message}</span>
+              )}
             </div>
-            <div className="inline-block w-full mb-3">
-              <input type="file" name="file" className="w-full" ref={register({
-                required: "You must specify a password",
-              })} />
-              {errors.file && <span className="text-red-600">{errors.file.message}</span>}
+            <div className='inline-block w-full mb-3 mt-4'>
+              <ButtonSuccess inputType='submit' widthInput='w-full'>
+                Register
+              </ButtonSuccess>
             </div>
-            <div className="inline-block w-full mb-3 mt-4">
-              <ButtonSuccess inputType="submit" widthInput="w-full" >Register</ButtonSuccess>
-            </div>
-            <div className="inline-block w-full mb-3">
-              <span> Already have an account ?  <Link to="/backend/login" className="text-blue-600" >Sign In</Link></span>
+            <div className='inline-block w-full mb-3'>
+              <span>
+                {' '}
+                Already have an account ?{' '}
+                <Link to='/backend/login' className='text-blue-600'>
+                  Sign In
+                </Link>
+              </span>
             </div>
           </div>
         </form>

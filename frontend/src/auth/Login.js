@@ -1,13 +1,15 @@
 import React, { Fragment, useState } from 'react';
-import { useForm } from "react-hook-form";
+import { useForm } from 'react-hook-form';
 import { Redirect, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Alert from '../components/layouts/alert';
 import { setAlert } from '../redux/actions/alertAction';
 import { login } from '../redux/actions/authAction';
-import Logo from '../assets/images/logo.png'
-import ButtonSuccess from '../components/buttons/Success'
+import Logo from '../assets/images/logo.png';
+import ButtonSuccess from '../components/buttons/Success';
+import Avatar from '@material-ui/core/Avatar';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const Register = ({ login, isAuthenticated }) => {
   const { register, handleSubmit, errors } = useForm();
@@ -32,14 +34,24 @@ const Register = ({ login, isAuthenticated }) => {
 
   return (
     <Fragment>
-      <div className="w-full bg-gray-200 h-screen pt-48"  >
-        <div className="p-6 bg-white w-1/4 mx-auto shadow-xl">
-          <img src={Logo} style={{ width: '100px' }} className="mx-auto my-4" />
+      <div className='w-full bg-gray-200 h-screen pt-48'>
+        <div className='p-6 bg-white w-1/4 mx-auto shadow-xl'>
+          {/* <img src={Logo} style={{ width: '100px' }} className='mx-auto my-4' /> */}
+          <Avatar
+            style={{
+              margin: 'auto',
+              backgroundColor: '#ffd700',
+              margin: '10px auto 20px auto',
+            }}
+          >
+            <LockOutlinedIcon />
+          </Avatar>
           <Alert />
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="inline-block w-full mb-3">
+            <div className='inline-block w-full mb-3 mt-3'>
               <label>Email</label>
-              <input className="border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500"
+              <input
+                className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500'
                 type='text'
                 name='email'
                 value={email}
@@ -47,9 +59,10 @@ const Register = ({ login, isAuthenticated }) => {
                 ref={register}
               />
             </div>
-            <div className="inline-block w-full mb-3">
+            <div className='inline-block w-full mb-3'>
               <label>Password</label>
-              <input className="border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500"
+              <input
+                className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500'
                 type='password'
                 name='password'
                 value={password}
@@ -57,58 +70,33 @@ const Register = ({ login, isAuthenticated }) => {
                 ref={register}
               />
             </div>
-            <label className="mb-4 flex items-center">
-              <input type="checkbox" className="form-checkbox" name="remeber" id="remeber" />
-              <span className="ml-2">I want to remember you ?</span>
+            <label className='mb-4 flex items-center'>
+              <input
+                type='checkbox'
+                className='form-checkbox'
+                name='remeber'
+                id='remeber'
+              />
+              <span className='ml-2'>I want to remember you ?</span>
             </label>
-            <div className="inline-block w-full mb-3 mt-4">
-              <ButtonSuccess inputType="submit" widthInput="w-full" >Login</ButtonSuccess>
+            <div className='inline-block w-full mb-3 mt-4'>
+              <ButtonSuccess inputType='submit' widthInput='w-full'>
+                Login
+              </ButtonSuccess>
             </div>
-            <div className="inline-block w-full mb-3">
-              <span> Don't have an account ?  <Link to="/backend/register" className="text-blue-600" >Sign Up</Link></span>
+            <div className='inline-block w-full mb-3'>
+              <span>
+                {' '}
+                Don't have an account ?{' '}
+                <Link to='/backend/register' className='text-blue-600'>
+                  Sign Up
+                </Link>
+              </span>
             </div>
           </form>
         </div>
       </div>
     </Fragment>
-    // <div style={{ marginTop: '200px' }}>
-    //   <Alert />
-    //   <form onSubmit={onSubmit}>
-    //     <div className='grid grid-cols-12 gap-4'>
-    //       <div className='col-start-5 col-end-9 mt-5'>
-    //         <h1 className='text-4xl'>Login</h1>
-    //       </div>
-    //       <div className='col-start-5 col-end-9'>
-    //         <label className='text-base'>Email</label>
-    //         <input
-    //           className='border-2 border-gray-800 rounded w-full py-2 px-2'
-    // type='text'
-    // name='email'
-    // value={email}
-    // onChange={onChange}
-    //         />
-    //       </div>
-    //       <div className='col-start-5 col-end-9'>
-    //         <label className='text-base'>Password</label>
-    //         <input
-    //           className='border-2 border-gray-800 rounded w-full py-2 px-2'
-    //           type='password'
-    //           name='password'
-    //           value={password}
-    //           onChange={onChange}
-    //         />
-    //       </div>
-    //       <div className='col-start-5 col-end-9'>
-    //         <button
-    //           className='shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded'
-    //           type='submit'
-    //         >
-    //           Sign In
-    //         </button>
-    //       </div>
-    //     </div>
-    //   </form>
-    // </div>
   );
 };
 

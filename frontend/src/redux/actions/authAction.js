@@ -42,15 +42,15 @@ export const registerUser = (formData, history) => async (dispatch) => {
     dispatch(setAlert('Register success', 'success'));
 
     setTimeout(function () {
-      history.push('/login')
+      history.push('/login');
     }, 3000);
 
-    // 
+    //
   } catch (err) {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'error')));
     }
 
     dispatch({
@@ -76,7 +76,7 @@ export const login = (email, password) => async (dispatch) => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'error')));
     }
 
     dispatch({

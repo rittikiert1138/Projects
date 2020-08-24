@@ -1,12 +1,8 @@
-import React from 'react'
-import Layout from '../components/layouts/Layout'
+import React from 'react';
+// import Layout from '../components/layouts/Layout'
 
 const Notfound = () => {
-    return (
-        <Layout>
+  return <div></div>;
+};
 
-        </Layout>
-    )
-}
-
-export default Notfound
+export default Notfound;
