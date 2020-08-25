@@ -6,19 +6,6 @@ import { Link } from 'react-router-dom';
 import AlertBox from '../../components/layouts/alert';
 import { getProducts, deleteProduct } from '../../redux/actions/productAction';
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CreateIcon from '@material-ui/icons/Create';
-import AddIcon from '@material-ui/icons/Add';
-
 const ListProduct = ({ getProducts, deleteProduct, product: { products } }) => {
   useEffect(() => {
     getProducts();
@@ -26,68 +13,51 @@ const ListProduct = ({ getProducts, deleteProduct, product: { products } }) => {
 
   return (
     <Layout>
-      <div style={{ textAlign: 'right' }}>
-        <Button
-          variant='contained'
-          color='primary'
-          startIcon={<AddIcon />}
-          component={Link}
-          to={`/backend/product/create`}
-        >
-          Create
-        </Button>
-      </div>
-      <AlertBox />
-      <TableContainer component={Paper} style={{ marginTop: '25px' }}>
-        <Table style={{ width: '100%' }} aria-label='simple table'>
-          <TableHead>
-            <TableRow style={{ color: '#fff' }}>
-              <TableCell align='center' style={{ width: '5%' }}>
-                No.
-              </TableCell>
-              <TableCell align='left'>Product name</TableCell>
-              <TableCell align='center' style={{ width: '30%' }}>
-                Product price
-              </TableCell>
-              <TableCell align='center' style={{ width: '20%' }}>
-                Manage
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
+      <div className="w-full bg-white h-auto shadow-md rounded p-4">
+        <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="col-span-1">
+            <h3 className="text-xl text-gray-600">Products</h3>
+          </div>
+          <div className="col-span-1 text-right">
+            <Link to={`/product/create`}>
+              <button className="bg-blue-500 text-white h-10 px-4 focus:outline-none"><i className="fas fa-plus"></i> Create</button>
+            </Link>
+          </div>
+        </div>
+        <AlertBox />
+        <table className="table-fixed w-full mt-4">
+          <thead>
+            <tr>
+              <th className="border w-20 px-4 py-3">No.*</th>
+              <th className="border px-4 py-3 text-left">Name</th>
+              <th className="border w-1/5 px-4 py-3">Price</th>
+              <th className="border w-1/5 px-4 py-3">Manage</th>
+            </tr>
+          </thead>
+          <tbody>
             {products.map((item, i) => (
-              <TableRow key={i}>
-                <TableCell align='center'>{i + 1}</TableCell>
-                <TableCell align='left'>{item.pdname}</TableCell>
-                <TableCell align='center'>{item.pdprice}</TableCell>
-                <TableCell align='center'>
-                  <ButtonGroup
-                    variant='contained'
-                    aria-label='contained button group'
-                  >
-                    <Button
-                      color='primary'
-                      startIcon={<CreateIcon />}
-                      component={Link}
-                      to={`/backend/product/edit/${item._id}`}
-                      style={{ backgroundColor: '#ffb119' }}
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      color='secondary'
-                      startIcon={<DeleteIcon />}
-                      onClick={() => deleteProduct(item._id)}
-                    >
-                      Delete
-                    </Button>
-                  </ButtonGroup>
-                </TableCell>
-              </TableRow>
+              <tr key={item._id} >
+                <td className="border px-4 py-3 text-center">{i + 1}</td>
+                <td className="border px-4 py-3">{item.pdname}</td>
+                <td className="border px-4 py-3 text-center">{item.pdprice}</td>
+                <td className="border px-4 py-3 text-center">
+                  <div className="inline-flex">
+                    <Link to={`/product/edit/${item._id}`}>
+                      <button className="bg-yellow-500 h-10 text-white hover:bg-yellow-600 px-5 rounded-l focus:outline-none">
+                        <i className="fas fa-pencil"></i> Edit
+                    </button>
+                    </Link>
+                    <button className="bg-red-500 h-10 text-white hover:bg-red-600 px-5 rounded-r focus:outline-none"
+                      onClick={() => deleteProduct(item._id)}>
+                      <i className="fas fa-trash"></i> Delete
+                  </button>
+                  </div>
+                </td>
+              </tr>
             ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+          </tbody>
+        </table>
+      </div>
     </Layout>
   );
 };

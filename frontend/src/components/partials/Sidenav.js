@@ -9,34 +9,16 @@ const Sidenav = () => {
       </div>
       <div>
         <ul>
-          <Link to='/block'>
+          <Link to='/dashboard'>
             <li className='text-white py-3 px-4 hover:bg-blue-300 hover:bg-opacity-50'>
-              <i class='fas fa-th-large'></i>
-              <span className='uppercase ml-4'>Block</span>
+              <i className='fas fa-th-large'></i>
+              <span className='uppercase ml-4'>Dashboard</span>
             </li>
           </Link>
-          <Link to='/button'>
+          <Link to='/product'>
             <li className='text-white py-3 px-4 hover:bg-blue-300 hover:bg-opacity-50'>
-              <i class='fas fa-th'></i>
-              <span className='uppercase ml-4'>Button</span>
-            </li>
-          </Link>
-          <Link to='/input'>
-            <li className='text-white py-3 px-4 hover:bg-blue-300 hover:bg-opacity-50'>
-              <i class='fas fa-scroll'></i>
-              <span className='uppercase ml-4'>Input</span>
-            </li>
-          </Link>
-          <Link to='/table'>
-            <li className='text-white py-3 px-4 hover:bg-blue-300 hover:bg-opacity-50'>
-              <i class='fas fa-table'></i>
-              <span className='uppercase ml-4'>Table</span>
-            </li>
-          </Link>
-          <Link to='/alert'>
-            <li className='text-white py-3 px-4 hover:bg-blue-300 hover:bg-opacity-50'>
-              <i class='fas fa-bell'></i>
-              <span className='uppercase ml-4'>Alert</span>
+              <i className='fas fa-th'></i>
+              <span className='uppercase ml-4'>Product</span>
             </li>
           </Link>
         </ul>

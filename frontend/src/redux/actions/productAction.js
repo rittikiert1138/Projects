@@ -26,7 +26,7 @@ export const addProduct = (formData, history) => async (dispatch) => {
 
         dispatch(setAlert('Insert data success', 'success'));
 
-        history.push('/backend/product');
+        history.push('/product');
 
     } catch (err) {
         const errors = err.response.data.errors;
@@ -89,7 +89,7 @@ export const updateProduct = (id, formData, history) => async (dispatch) => {
 
         dispatch(setAlert('Update data success', 'success'));
 
-        history.push('/backend/product');
+        history.push('/product');
 
     } catch (err) {
         const errors = err.response.data.errors;

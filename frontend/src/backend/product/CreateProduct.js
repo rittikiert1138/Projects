@@ -18,6 +18,43 @@ const CreateProduct = ({ addProduct, history }) => {
 
   return (
     <Layout>
+      <div className="grid grid-cols-3 gap-4 ">
+        <div className="col-span-2 bg-white p-4">
+          <div>
+            <label className="text-gray-600 uppercase">BASIC INPUT</label>
+            <input
+              className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500 rounded border-gray-500'
+              type='text'
+              name='email'
+            />
+          </div>
+        </div>
+        <div className="col-span-1 bg-white p-4">
+          <div>
+            <label className="text-gray-600 uppercase">BASIC INPUT</label>
+            <input
+              className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500 rounded border-gray-500'
+              type='text'
+              name='email'
+            />
+          </div>
+        </div>
+      </div>
+      {/* <div className="w-full h-64 p-4">
+        <h3 className="uppercase text-lg text-gray-600 mb-4">Text inputs</h3>
+        <div className="grid grid-cols-3 gap-4">
+          <div className="col-span-1">
+            <div>
+              <label className="text-gray-600 uppercase">BASIC INPUT</label>
+              <input
+                className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500 rounded border-gray-500'
+                type='text'
+                name='email'
+              />
+            </div>
+          </div>
+        </div>
+      </div> */}
       {/* <Alert /> */}
       {/* <div className='shadow-md bg-white'>
         <div className='bg-teal-400 h-16 pt-3 pl-4'>
@@ -58,7 +95,7 @@ const CreateProduct = ({ addProduct, history }) => {
           </div>
         </div>
       </div> */}
-      <form onSubmit={handleSubmit(onSubmit)}>
+      {/* <form onSubmit={handleSubmit(onSubmit)}>
         <TextField
           id='outlined-required'
           label='Produdt name'
@@ -77,7 +114,7 @@ const CreateProduct = ({ addProduct, history }) => {
         <button type='submit' className='bg-green-500 text-white w-40 py-2'>
           Save
         </button>
-      </form>
+      </form> */}
     </Layout>
   );
 };

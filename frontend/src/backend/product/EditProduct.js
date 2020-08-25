@@ -35,7 +35,6 @@ const EditProduct = ({
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // console.log(match.params.id, formData)
     updateProduct(match.params.id, formData, history);
   };
 

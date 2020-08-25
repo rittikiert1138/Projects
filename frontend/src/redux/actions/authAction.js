@@ -60,11 +60,10 @@ export const registerUser = (formData, history) => async (dispatch) => {
 };
 
 // Login User
-export const login = (email, password) => async (dispatch) => {
-  const body = { email, password };
+export const login = (formData) => async (dispatch) => {
 
   try {
-    const res = await axios.post('http://localhost:5000/api/auth/login', body);
+    const res = await axios.post('http://localhost:5000/api/auth/login', formData);
 
     dispatch({
       type: LOGIN_SUCCESS,
