@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import LayoutBackend from '../../components/layouts/BackendLayout';
+import Layout from '../../components/layouts/Layout';
 import { Link } from 'react-router-dom';
 import AlertBox from '../../components/layouts/alert';
 import { getProducts, deleteProduct } from '../../redux/actions/productAction';
@@ -25,7 +25,7 @@ const ListProduct = ({ getProducts, deleteProduct, product: { products } }) => {
   }, [getProducts]);
 
   return (
-    <LayoutBackend>
+    <Layout>
       <div style={{ textAlign: 'right' }}>
         <Button
           variant='contained'
@@ -88,7 +88,7 @@ const ListProduct = ({ getProducts, deleteProduct, product: { products } }) => {
           </TableBody>
         </Table>
       </TableContainer>
-    </LayoutBackend>
+    </Layout>
   );
 };
 

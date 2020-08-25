@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/actions/alertAction';
-import LayoutBackend from '../../components/layouts/BackendLayout';
+import Layout from '../../components/layouts/Layout';
 import { addProduct } from '../../redux/actions/productAction';
 import TextField from '@material-ui/core/TextField';
 // import Alert from '../../components/layouts/alert';
@@ -17,7 +17,7 @@ const CreateProduct = ({ addProduct, history }) => {
   };
 
   return (
-    <LayoutBackend>
+    <Layout>
       {/* <Alert /> */}
       {/* <div className='shadow-md bg-white'>
         <div className='bg-teal-400 h-16 pt-3 pl-4'>
@@ -78,7 +78,7 @@ const CreateProduct = ({ addProduct, history }) => {
           Save
         </button>
       </form>
-    </LayoutBackend>
+    </Layout>
   );
 };
 

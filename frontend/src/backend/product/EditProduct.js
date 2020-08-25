@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import LayoutBackend from '../../components/layouts/BackendLayout';
+import Layout from '../../components/layouts/Layout';
 import { getProduct, updateProduct } from '../../redux/actions/productAction';
 // import Alert from '../../components/layouts/alert';
 
@@ -42,7 +42,7 @@ const EditProduct = ({
   const { pdname, pdprice } = formData;
 
   return (
-    <LayoutBackend>
+    <Layout>
       {/* <Alert /> */}
       <div className='shadow-md bg-white'>
         <div className='bg-teal-400 h-16 pt-3 pl-4'>
@@ -83,7 +83,7 @@ const EditProduct = ({
           </div>
         </div>
       </div>
-    </LayoutBackend>
+    </Layout>
   );
 };
 

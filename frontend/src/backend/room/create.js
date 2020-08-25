@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/actions/alertAction';
-import BackendLayout from '../../components/layouts/BackendLayout';
+import Layout from '../../components/layouts/Layout';
 import { addProduct } from '../../redux/actions/productAction';
 // import Alert from '../../components/layouts/alert';
 import DummyImage from '../../assets/images/dummy.png';
@@ -55,7 +55,7 @@ const CreateRoom = ({ addProduct, history }) => {
   let { imagePreviewUrl } = image;
 
   return (
-    <BackendLayout>
+    <Layout>
       {/* <Alert /> */}
       <div className='shadow-md bg-white'>
         <div className='bg-teal-400 h-16 pt-3 pl-4'>
@@ -129,7 +129,7 @@ const CreateRoom = ({ addProduct, history }) => {
           </form>
         </div>
       </div>
-    </BackendLayout>
+    </Layout>
   );
 };
 

@@ -6,10 +6,6 @@ import { connect } from 'react-redux';
 import Alert from '../components/layouts/alert';
 import { setAlert } from '../redux/actions/alertAction';
 import { registerUser } from '../redux/actions/authAction';
-import Logo from '../assets/images/logo.png';
-import ButtonSuccess from '../components/buttons/Success';
-import Avatar from '@material-ui/core/Avatar';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 const Register = ({ setAlert, registerUser, isAuthenticated, history }) => {
   const { register, handleSubmit, watch, errors } = useForm();
@@ -25,8 +21,7 @@ const Register = ({ setAlert, registerUser, isAuthenticated, history }) => {
 
   const onSubmit = async (data, e) => {
     e.preventDefault();
-    console.log(data);
-    // await registerUser(data, history);
+    await registerUser(data, history);
   };
 
   const { username, email, password, password2 } = formData;
@@ -37,7 +32,81 @@ const Register = ({ setAlert, registerUser, isAuthenticated, history }) => {
 
   return (
     <Fragment>
-      <div className='w-full bg-gray-200 h-screen pt-48'>
+      <div className='w-full bg-gray-200 h-screen pt-32'>
+        <div className='p-6 bg-gradient-to-t from-purple-400 to-blue-400 w-1/4 mx-auto shadow-xl rounded'>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className='text-center mt-5 mb-3'>
+              <h3 className='text-3xl text-white'>Register</h3>
+            </div>
+            <Alert />
+            <div className='inline-block w-full mb-3 mt-3'>
+              <label className='text-white'>Username</label>
+              <input
+                className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500 rounded'
+                type='text'
+                name='username'
+                ref={register({ required: true })}
+              />
+            </div>
+            <div className='inline-block w-full mb-3'>
+              <label className='text-white'>Email</label>
+              <input
+                className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500 rounded'
+                type='text'
+                name='email'
+                ref={register({ required: true })}
+              />
+            </div>
+            <div className='inline-block w-full mb-3'>
+              <label className='text-white'>Password</label>
+              <input
+                className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500 rounded'
+                type='password'
+                name='password'
+                ref={register({ required: true })}
+              />
+            </div>
+            <div className='inline-block w-full mb-3'>
+              <label className='text-white'>Password</label>
+              <input
+                className='border w-full py-2 px-2 mt-2 focus:outline-none rounded-none focus:border-blue-500 rounded'
+                type='password'
+                name='password2'
+                ref={register({ required: true })}
+              />
+            </div>
+            <label className='mb-4 flex items-center'>
+              <input type='checkbox' className='form-checkbox' />
+              <span className='ml-2 text-white'>
+                I AGREE TERMS AND CONDITIONS.
+              </span>
+            </label>
+            <div className='inline-block w-full mb-3'>
+              <button
+                className='w-full bg-red-600 h-10 rounded text-white mb-3 hover:bg-red-700'
+                type='submit'
+              >
+                Register
+              </button>
+              <button className='w-full bg-gray-600 h-10 rounded text-white mb-3 hover:bg-gray-700'>
+                Cancel
+              </button>
+            </div>
+            <div className='grid grid-cols-2 gap-4'>
+              <div className='col-span-2 text-white'>
+                <hr />
+              </div>
+            </div>
+            <div className='grid grid-cols-2 gap-4 mt-3'>
+              <div className='col-span-1 text-white'>Forgot Password ?</div>
+              <div className='col-span-1 text-right text-white'>
+                <Link to='/login'>Login</Link>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      {/* <div className='w-full bg-gray-200 h-screen pt-48'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='p-6 bg-white w-1/4 mx-auto shadow-xl'>
             <Avatar
@@ -137,7 +206,7 @@ const Register = ({ setAlert, registerUser, isAuthenticated, history }) => {
             </div>
           </div>
         </form>
-      </div>
+      </div> */}
     </Fragment>
 
     // <div style={{ marginTop: '100px' }}>

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import BackendLayout from '../../components/layouts/BackendLayout';
+import Layout from '../../components/layouts/Layout';
 import { Link } from 'react-router-dom';
 // import Alert from '../../components/layouts/alert';
 import { getProducts, deleteProduct } from '../../redux/actions/productAction';
@@ -12,7 +12,7 @@ const ListRoom = ({ getProducts, deleteProduct, product: { products } }) => {
   }, [getProducts]);
 
   return (
-    <BackendLayout>
+    <Layout>
       {/* <Alert /> */}
       <div className='bg-teal-400 h-16 text-right p-3'>
         <Link to='/backend/room/create'>
@@ -41,7 +41,7 @@ const ListRoom = ({ getProducts, deleteProduct, product: { products } }) => {
         </thead>
         <tbody></tbody>
       </table>
-    </BackendLayout>
+    </Layout>
   );
 };
 

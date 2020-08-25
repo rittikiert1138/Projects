@@ -11,13 +11,13 @@ import LoginPage from './auth/Login';
 import RegisterPage from './auth/Register';
 import DashboardPage from './backend/dashboard';
 //Product
-import ListProduct from './backend/product/ListProduct'
-import CreateProduct from './backend/product/CreateProduct'
-import EditProduct from './backend/product/EditProduct'
+import ListProduct from './backend/product/ListProduct';
+import CreateProduct from './backend/product/CreateProduct';
+import EditProduct from './backend/product/EditProduct';
 
 //Room
-import ListRoom from './backend/room/list'
-import CreateRoom from './backend/room/create'
+import ListRoom from './backend/room/list';
+import CreateRoom from './backend/room/create';
 
 import { loadUser } from './redux/actions/authAction';
 import setAuthToken from './utils/setAuthToken';
@@ -33,16 +33,32 @@ const Routes = () => {
     <Provider store={store}>
       <Router history={history}>
         <Switch>
-          <Route exact path='/backend/login' component={LoginPage} />
-          <Route exact path='/backend/register' component={RegisterPage} />
-          <Route exact path='/backenddashboard' component={DashboardPage} />
-          <PrivateRoute exact path='/backend/dashboard' component={DashboardPage} />
+          <Route exact path='/login' component={LoginPage} />
+          <Route exact path='/register' component={RegisterPage} />
+          <Route exact path='/dashboard' component={DashboardPage} />
+          <PrivateRoute
+            exact
+            path='/backend/dashboard'
+            component={DashboardPage}
+          />
           <PrivateRoute exact path='/backend/product' component={ListProduct} />
-          <PrivateRoute exact path='/backend/product/create' component={CreateProduct} />
-          <PrivateRoute exact path='/backend/product/edit/:id' component={EditProduct} />
+          <PrivateRoute
+            exact
+            path='/backend/product/create'
+            component={CreateProduct}
+          />
+          <PrivateRoute
+            exact
+            path='/backend/product/edit/:id'
+            component={EditProduct}
+          />
 
           <PrivateRoute exact path='/backend/room' component={ListRoom} />
-          <PrivateRoute exact path='/backend/room/create' component={CreateRoom} />
+          <PrivateRoute
+            exact
+            path='/backend/room/create'
+            component={CreateRoom}
+          />
         </Switch>
       </Router>
     </Provider>
