@@ -15,16 +15,25 @@ exports.store = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { pdname, pdprice } = req.body
+    const { name, price, description, category } = req.body
 
-    product = new Product({
-        pdname,
-        pdprice
-    });
+    try {
 
-    await product.save()
+        product = new Product({
+            name,
+            price,
+            description,
+            category
+        });
 
-    return res.status(200).json({ success: [{ msg: 'Insert data success' }] });
+        await product.save()
+
+        return res.status(200).json({ success: [{ msg: 'Insert data success' }] });
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
 }
 
 exports.edit = async (req, res) => {
@@ -36,9 +45,15 @@ exports.edit = async (req, res) => {
 
 exports.update = async (req, res) => {
 
-    const { pdname, pdprice } = req.body
+    const { name, price, description, category } = req.body
 
-    const product = await Product.findByIdAndUpdate({ _id: req.params.id }, { pdname: pdname, pdprice: pdprice })
+    const product = await Product.findByIdAndUpdate({ _id: req.params.id },
+        {
+            name: name,
+            price: price,
+            description: description,
+            category: category
+        })
     await product.save()
 
     res.status(200).json({ message: 'Product updated!' });

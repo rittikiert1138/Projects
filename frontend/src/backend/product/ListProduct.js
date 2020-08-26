@@ -38,8 +38,8 @@ const ListProduct = ({ getProducts, deleteProduct, product: { products } }) => {
             {products.map((item, i) => (
               <tr key={item._id} >
                 <td className="border px-4 py-3 text-center">{i + 1}</td>
-                <td className="border px-4 py-3">{item.pdname}</td>
-                <td className="border px-4 py-3 text-center">{item.pdprice}</td>
+                <td className="border px-4 py-3">{item.name}</td>
+                <td className="border px-4 py-3 text-center">{item.price}</td>
                 <td className="border px-4 py-3 text-center">
                   <div className="inline-flex">
                     <Link to={`/product/edit/${item._id}`}>

@@ -6,8 +6,9 @@ const ProductController = require('../controllers/product')
 
 router.get('/', ProductController.index);
 router.post('/store', [
-    check('pdname', 'Name is required').not().isEmpty(),
-    check('pdprice', 'Price is required').not().isEmpty(),
+    check('name', 'Name is required').not().isEmpty(),
+    check('price', 'Price is required').not().isEmpty(),
+    check('category', 'Category is required').not().isEmpty(),
 ], ProductController.store);
 router.get('/edit/:id', ProductController.edit);
 router.put('/update/:id', ProductController.update);
