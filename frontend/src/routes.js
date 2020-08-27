@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import history from './utils/history';
 
@@ -54,11 +55,7 @@ const Routes = () => {
           />
 
           <PrivateRoute exact path='/room' component={ListRoom} />
-          <PrivateRoute
-            exact
-            path='/room/create'
-            component={CreateRoom}
-          />
+          <PrivateRoute exact path='/room/create' component={CreateRoom} />
         </Switch>
       </Router>
     </Provider>
