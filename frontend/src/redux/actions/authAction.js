@@ -10,11 +10,12 @@ import {
   LOGIN_FAIL,
   LOGOUT,
 } from './types';
+import { API_URL } from '../../utils/config'
 
 // Load User
 export const loadUser = () => async (dispatch) => {
   try {
-    const res = await api.get('http://localhost:5000/api/auth');
+    const res = await api.get('http://localhost:5000/api/admin');
 
     dispatch({
       type: USER_LOADED,
@@ -31,7 +32,7 @@ export const loadUser = () => async (dispatch) => {
 export const registerUser = (formData, history) => async (dispatch) => {
   try {
     const res = await axios.post(
-      'http://localhost:5000/api/auth/register',
+      API_URL + '/api/admin/register',
       formData
     );
     dispatch({
@@ -63,7 +64,7 @@ export const registerUser = (formData, history) => async (dispatch) => {
 export const login = (formData) => async (dispatch) => {
 
   try {
-    const res = await axios.post('http://localhost:5000/api/auth/login', formData);
+    const res = await axios.post(`${API_URL}/api/admin/login`, formData);
 
     dispatch({
       type: LOGIN_SUCCESS,

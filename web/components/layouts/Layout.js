@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux'
 import Head from 'next/head';
 import Navbar from './Navbar';
+import { loadUser, logout } from '../../redux/actions/userAction'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isAuthenticated, loadUser, logout }) => {
+  useEffect(() => {
+    loadUser()
+  }, []);
   return (
     <>
       <Head>
@@ -12,10 +17,14 @@ const Layout = ({ children }) => {
         />
         <title>Shop</title>
       </Head>
-      <Navbar />
+      <Navbar isAuthenticated={isAuthenticated} logout={logout} />
       {children}
     </>
   );
 };
 
-export default Layout;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.users.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { loadUser, logout })(Layout);

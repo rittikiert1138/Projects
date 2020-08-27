@@ -33,6 +33,4 @@ router.get('/edit/:id', ProductController.edit);
 router.put('/update/:id', upload.single('new_image'), ProductController.update);
 router.delete('/destroy/:id', ProductController.destroy);
 
-router.post('/test', upload.single('image'), (req, res) => {});
-
 module.exports = router;

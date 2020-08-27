@@ -16,7 +16,7 @@ import { API_URL } from '../../utils/config'
 export const addProduct = (formData, history) => async (dispatch) => {
     try {
         const res = await axios.post(
-            API_URL + '/api/product/store',
+            API_URL + '/api/admin/product/store',
             formData
         );
         dispatch({
@@ -44,7 +44,7 @@ export const addProduct = (formData, history) => async (dispatch) => {
 // get all product
 export const getProducts = () => async (dispatch) => {
     try {
-        const res = await axios.get(API_URL + '/api/product');
+        const res = await axios.get(API_URL + '/api/admin/product');
         dispatch({
             type: GET_PRODUCTS,
             payload: res.data,
@@ -62,7 +62,7 @@ export const getProducts = () => async (dispatch) => {
 // get all product
 export const getProduct = (id) => async (dispatch) => {
     try {
-        const res = await axios.get(API_URL + `/api/product/edit/${id}`);
+        const res = await axios.get(API_URL + `/api/admin/product/edit/${id}`);
         dispatch({
             type: GET_PRODUCT,
             payload: res.data,
@@ -81,7 +81,7 @@ export const getProduct = (id) => async (dispatch) => {
 // get all product
 export const updateProduct = (id, formData, history) => async (dispatch) => {
     try {
-        const res = await axios.put(API_URL + `/api/product/update/${id}`, formData);
+        const res = await axios.put(API_URL + `/api/admin/product/update/${id}`, formData);
         dispatch({
             type: UPDATE_PRODUCT,
             payload: res.data,
@@ -104,7 +104,7 @@ export const updateProduct = (id, formData, history) => async (dispatch) => {
 export const deleteProduct = id => async dispatch => {
     try {
         if (window.confirm("Press a button!")) {
-            const res = await axios.delete(API_URL + `/api/product/destroy/${id}`);
+            const res = await axios.delete(API_URL + `/api/admin/product/destroy/${id}`);
 
             dispatch({
                 type: GET_PRODUCTS,

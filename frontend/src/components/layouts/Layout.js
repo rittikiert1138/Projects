@@ -10,6 +10,7 @@ import Topnav from '../partials/Topnav';
 import '../../assets/css/main.css';
 
 const Layout = ({ auth: { isAuthenticated }, logout, children }) => {
+
   if (!isAuthenticated) {
     return <Redirect to='/login' />;
   }
