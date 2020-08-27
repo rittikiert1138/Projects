@@ -11,7 +11,7 @@ import '../../assets/css/main.css';
 
 const Layout = ({ auth: { isAuthenticated }, logout, children }) => {
   if (!isAuthenticated) {
-    return <Redirect to='/backend/login' />;
+    return <Redirect to='/login' />;
   }
   return (
     <Fragment>

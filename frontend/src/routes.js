@@ -41,22 +41,22 @@ const Routes = () => {
             path='/backend/dashboard'
             component={DashboardPage}
           />
-          <PrivateRoute exact path='/backend/product' component={ListProduct} />
+          <PrivateRoute exact path='/product' component={ListProduct} />
           <PrivateRoute
             exact
-            path='/backend/product/create'
+            path='/product/create'
             component={CreateProduct}
           />
           <PrivateRoute
             exact
-            path='/backend/product/edit/:id'
+            path='/product/edit/:id'
             component={EditProduct}
           />
 
-          <PrivateRoute exact path='/backend/room' component={ListRoom} />
+          <PrivateRoute exact path='/room' component={ListRoom} />
           <PrivateRoute
             exact
-            path='/backend/room/create'
+            path='/room/create'
             component={CreateRoom}
           />
         </Switch>
