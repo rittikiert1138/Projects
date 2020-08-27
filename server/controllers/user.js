@@ -66,16 +66,6 @@ exports.login = async (req, res, next) => {
             return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
         }
 
-        // let user = await User.findOne({ email });
-        const create2 = await User.findByIdAndUpdate(
-            { _id: user._id },
-            {
-                updated_at: Date.now(),
-            }
-        );
-
-        await create2.save();
-
         const payload = {
             user: {
                 id: user.id,
