@@ -6,8 +6,9 @@ import Alert from '@material-ui/lab/Alert';
 const AlertBox = ({ alerts }) =>
   alerts !== null &&
   alerts.length > 0 &&
-  alerts.map((alert) => (
+  alerts.map((alert, i) => (
     <div
+      key={i}
       className={`w-full h-12 border p-3 mt-4 ${
         alert.alertType == 'success'
           ? 'border-green-500 bg-green-100'
@@ -15,9 +16,9 @@ const AlertBox = ({ alerts }) =>
       }`}
     >
       {alert.alertType == 'success' ? (
-        <i class='far fa-check-circle text-green-500'></i>
+        <i className='far fa-check-circle text-green-500'></i>
       ) : (
-        <i class='far fa-times text-red-500'></i>
+        <i className='far fa-times text-red-500'></i>
       )}
 
       <span
