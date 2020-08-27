@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Layout from '../components/layouts/Layout';
 import axios from 'axios';
 
-const Home = ({ users }) => {
+const Home = ({ isAuthenticated }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -27,9 +27,11 @@ const Home = ({ users }) => {
                 </p>
               </div>
               <div class="px-6 pt-4 pb-2">
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                {isAuthenticated && <>
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+                  <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                </>}
               </div>
             </div>
           ))}
@@ -39,8 +41,8 @@ const Home = ({ users }) => {
   );
 };
 
-const mapStateToProps = ({ users }) => {
-  return { users };
-};
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.users.isAuthenticated,
+});
 
 export default connect(mapStateToProps, {})(Home);
