@@ -17,5 +17,6 @@ app.use('/api/admin', require('./routes/admin'));
 app.use('/api/admin/product', require('./routes/product'));
 
 app.use('/api/user', require('./routes/user'));
+app.use('/api/frontend', require('./routes/frontend'));
 
 app.listen(5000);
