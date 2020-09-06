@@ -5,7 +5,7 @@ const SellerController = require('../controllers/seller');
 const { check } = require('express-validator');
 
 //Loaduser
-router.get('/me', SellerController.getProfile);
+router.get('/me', auth, SellerController.getProfile);
 router.get('/', auth, SellerController.loaduser);
 
 //Register
@@ -29,7 +29,7 @@ router.post('/register', [
     SellerController.register,
 ]);
 
-//Register
+//Login
 router.post('/login', [
     check('email', 'Email is required').not().isEmpty(),
     check(

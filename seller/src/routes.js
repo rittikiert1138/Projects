@@ -6,7 +6,6 @@ import PrivateRoute from './utils/PrivateRoute'
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { loadUser } from './redux/actions/user'
-import setAuthToken from './utils/setAuthToken'
 
 //Components
 import LoginPage from './views/auth/Login';
@@ -16,6 +15,7 @@ import Notfound from './views/Notfound'
 
 import Dashboard from './views/Dashboard'
 import ProductList from './views/product/Product.jsx'
+import Profile from './views/Profile'
 
 const Routes = () => {
 
@@ -32,6 +32,7 @@ const Routes = () => {
                     <Route exact path='/forgot-password' component={ForgotPassword} />
                     <PrivateRoute exact path='/dashboard' component={Dashboard} />
                     <PrivateRoute exact path='/product-lists' component={ProductList} />
+                    <PrivateRoute exact path='/seller-profile' component={Profile} />
                     <Route component={Notfound} />
                 </Switch>
             </Router>

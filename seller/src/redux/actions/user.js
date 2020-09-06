@@ -8,7 +8,8 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    GET_PROFILE
 } from '../types.js';
 import { API_URL } from '../../utils/config'
 
@@ -58,8 +59,6 @@ export const loginSeller = (formData, history) => async (dispatch) => {
             localStorage.setItem('token', res.data.token)
         }
 
-        dispatch(loadUser())
-
         history.push('/dashboard')
 
     } catch (err) {
@@ -94,6 +93,23 @@ export const loadUser = () => async (dispatch) => {
 
         dispatch({
             type: USER_LOADED,
+            payload: res.data,
+        });
+
+    } catch (err) {
+        dispatch({
+            type: AUTH_ERROR,
+        });
+    }
+};
+
+// Get profile
+export const getProfile = () => async (dispatch) => {
+    try {
+        const res = await api.get(`http://localhost:5000/apis/seller/me`);
+
+        dispatch({
+            type: GET_PROFILE,
             payload: res.data,
         });
 

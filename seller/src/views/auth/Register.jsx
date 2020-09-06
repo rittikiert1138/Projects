@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Button, Container, Row, Col, Form, Alert } from 'react-bootstrap';
 import myData from '../../assets/json/raw_database.json';
 import AlertBox from '../../components/layouts/Alert'
 import { registerSeller } from '../../redux/actions/user'
 
-const RegisterPage = ({ registerSeller, status }) => {
+const RegisterPage = ({ registerSeller, status, isAuth }) => {
 
     const { register, handleSubmit, watch, errors } = useForm();
 
@@ -70,6 +70,10 @@ const RegisterPage = ({ registerSeller, status }) => {
         registerSeller(data)
     };
 
+    if (isAuth) {
+        return <Redirect to='/dashboard' />;
+    }
+
     return (
         <div>
             {status ?
@@ -109,7 +113,7 @@ const RegisterPage = ({ registerSeller, status }) => {
                                             <Form.Control type="email" name="email" ref={register({ required: true })} />
                                             {errors.email && <Form.Text className="text-danger">
                                                 ข้อมูลไม่ถูกต้อง
-                                 </Form.Text>}
+                                            </Form.Text>}
                                         </Form.Group>
                                     </Col>
                                     <Col lg="5">
@@ -305,7 +309,8 @@ const RegisterPage = ({ registerSeller, status }) => {
 }
 
 const mapStateToProps = (state) => ({
-    status: state.user.status
+    status: state.user.status,
+    isAuth: state.user.isAuth
 })
 
 export default connect(mapStateToProps, { registerSeller })(RegisterPage)

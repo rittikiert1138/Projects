@@ -8,7 +8,11 @@ const Layout = ({ children }) => {
         <Fragment>
             <Topnav />
             <Sidenav />
-            {children}
+            <div className="wrap-main-content">
+                <div className="main-content">
+                    {children}
+                </div>
+            </div>
         </Fragment>
     )
 }

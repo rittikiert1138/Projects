@@ -5,7 +5,10 @@ const jwt = require('jsonwebtoken');
 
 
 exports.getProfile = async (req, res) => {
-    res.send('seller')
+
+    const seller = await Seller.findById(req.seller.id).select('-password');
+
+    res.json(seller);
 }
 
 exports.register = async (req, res, next) => {

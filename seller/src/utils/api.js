@@ -6,8 +6,9 @@ const api = axios.create({
     baseURL: '/api',
     headers: {
         'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('token')
     },
-    'x-auth-token': localStorage.getItem('token')
+
 });
 /**
  intercept any error responses from the api
