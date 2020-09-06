@@ -1,0 +1,21 @@
+export const SET_ALERT = 'SET_ALERT';
+export const REMOVE_ALERT = 'REMOVE_ALERT';
+
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAIL = 'LOGIN_FAIL';
+export const USER_LOADED = 'USER_LOADED';
+export const AUTH_ERROR = 'AUTH_ERROR';
+export const LOGOUT = 'LOGOUT';
+
+export const GET_CARTS = 'GET_CARTS'
+export const REMOVE_CART = 'REMOVE_CART'
+export const COUNT_PRICE = 'COUNT_PRICE'
+
+//Product
+export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
+export const FETCH_PRODUCT = 'FETCH_PRODUCT';
+export const FETCH_PRODUCT_FAIL = 'FETCH_PRODUCT_FAIL';
+
+export const ADD_ITEM = 'ADD_ITEM'

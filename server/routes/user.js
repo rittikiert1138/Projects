@@ -31,5 +31,6 @@ router.post(
 );
 
 router.post('/cart', authUser, CartController.addCart);
+router.get('/cart', authUser, CartController.getCart);
 
 module.exports = router;
