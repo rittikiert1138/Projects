@@ -12,13 +12,13 @@ const Sidenav = () => {
             <div className="sidemenu">
                 <ul className="nav_link">
                     <Link to="/dashboard">
-                        <li className={location.pathname == '/dashboard' ? 'menu_active' : ''}>
+                        <li className={location.pathname === '/dashboard' ? 'menu_active' : ''}>
                             <i className="far fa-bell mr-2"></i>
                             Dashboard
                         </li>
                     </Link>
                     <Link to="/product-lists">
-                        <li className={location.pathname == '/product-lists' ? 'menu_active' : ''} >
+                        <li className={location.pathname === '/product-lists' ? 'menu_active' : ''} >
                             <i className="far fa-bell mr-2"></i>
                             Products
                         </li>

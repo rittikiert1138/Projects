@@ -112,3 +112,41 @@ exports.loaduser = async (req, res) => {
         res.status(500).send('Server Error');
     }
 };
+
+exports.update = async (req, res) => {
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const {
+        email, shopname, password, fname, lname, phone, address,
+        soi, street, province, district, subdistrict, zipcode, fax, contactphone, contactname
+    } = req.body
+
+    try {
+
+        const seller = await Seller.findByIdAndUpdate(
+            { _id: req.seller.id },
+            {
+                email: email, shopname: shopname, password: password,
+                fname: fname, lname: lname, phone: phone, address: address,
+                soi: soi, street: street, province: province, district: district,
+                subdistrict: subdistrict, zipcode: zipcode, fax: fax,
+                contactphone: contactphone, contactname: contactname
+            }
+        );
+
+        await seller.save();
+
+        const getcurrent = await Seller.findById(req.seller.id)
+
+        return res.json(getcurrent)
+
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Server error');
+    }
+
+}

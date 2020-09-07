@@ -7,7 +7,7 @@ const AlertBox = ({ alerts }) =>
     alerts !== null &&
     alerts.length > 0 &&
     alerts.map((alert, i) => (
-        <Alert variant={`${alert.alertType == 'success' ? 'success' : 'danger'}`}>
+        <Alert variant={`${alert.alertType === 'success' ? 'success' : 'danger'}`}>
             {alert.msg}
         </Alert>
     ));

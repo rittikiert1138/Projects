@@ -15,7 +15,7 @@ import Notfound from './views/Notfound'
 
 import Dashboard from './views/Dashboard'
 import ProductList from './views/product/Product.jsx'
-import Profile from './views/Profile'
+import Profile from './views/profile/Profile.jsx'
 
 const Routes = () => {
 

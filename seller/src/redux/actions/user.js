@@ -9,7 +9,8 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
     LOGOUT,
-    GET_PROFILE
+    GET_PROFILE,
+    UPDATE_PROFILE
 } from '../types.js';
 import { API_URL } from '../../utils/config'
 
@@ -110,6 +111,23 @@ export const getProfile = () => async (dispatch) => {
 
         dispatch({
             type: GET_PROFILE,
+            payload: res.data,
+        });
+
+    } catch (err) {
+        dispatch({
+            type: AUTH_ERROR,
+        });
+    }
+};
+
+// Get profile
+export const updateProfile = (formData) => async (dispatch) => {
+    try {
+        const res = await api.put(`http://localhost:5000/apis/seller/update-profile`, formData);
+
+        dispatch({
+            type: UPDATE_PROFILE,
             payload: res.data,
         });
 

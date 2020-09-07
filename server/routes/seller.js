@@ -39,4 +39,7 @@ router.post('/login', [
     SellerController.login,
 ]);
 
+//Update
+router.put('/update-profile', auth, SellerController.update);
+
 module.exports = router;

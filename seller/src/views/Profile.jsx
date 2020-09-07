@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { connect } from 'react-redux'
 import Layout from '../components/layouts/Layout'
 import myData from '../assets/json/raw_database.json';
-import { getProfile } from '../redux/actions/user'
+import { getProfile, updateProfile } from '../redux/actions/user'
 import { Row, Col, Form } from 'react-bootstrap'
 
 const initialState = {
@@ -23,7 +23,7 @@ const initialState = {
     contactname: ''
 };
 
-const Profile = ({ getProfile, user, loading }) => {
+const Profile = ({ getProfile, updateProfile, user, loading }) => {
 
     const { register, handleSubmit, errors } = useForm();
     const [formData, setFormData] = useState(initialState);
@@ -49,7 +49,8 @@ const Profile = ({ getProfile, user, loading }) => {
 
     const onSubmit = async (data, e) => {
         e.preventDefault();
-        console.log(data);
+        console.log(data)
+        updateProfile(data)
     };
 
     const onChange = (e) =>
@@ -182,7 +183,7 @@ const Profile = ({ getProfile, user, loading }) => {
                                         <Form.Control as="select" onChange={onChangeProv} name="province" defaultValue={province} ref={register}>
                                             {
                                                 province2 ? Object.keys(province2).map((prov, index) => (
-                                                    <option value={province2[prov][0].province_code} key={prov} selected={prov == province} >{prov}</option>
+                                                    <option value={prov} key={prov} selected={prov == province} >{prov}</option>
                                                 )) : ''
                                             }
                                         </Form.Control>
@@ -257,4 +258,4 @@ const mapStateToProps = (state) => ({
     user: state.user.user
 })
 
-export default connect(mapStateToProps, { getProfile })(Profile)
+export default connect(mapStateToProps, { getProfile, updateProfile })(Profile)

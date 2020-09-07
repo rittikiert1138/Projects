@@ -8,7 +8,7 @@ import { loginSeller } from '../../redux/actions/user'
 
 const Loginn = ({ loginSeller, isAuth, history }) => {
 
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit } = useForm();
 
     const onSubmit = async (data) => {
         loginSeller(data, history)

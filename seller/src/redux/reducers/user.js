@@ -1,4 +1,4 @@
-import { REGISTER_SUCCESS, USER_LOADED, LOGIN_SUCCESS, AUTH_ERROR, LOGOUT, GET_PROFILE } from '../types';
+import { REGISTER_SUCCESS, USER_LOADED, LOGIN_SUCCESS, AUTH_ERROR, LOGOUT, GET_PROFILE, UPDATE_PROFILE } from '../types';
 
 const initialState = {
     token: localStorage.getItem('token'),
@@ -13,6 +13,7 @@ export default function (state = initialState, action) {
 
     switch (type) {
         case USER_LOADED:
+        case UPDATE_PROFILE:
         case GET_PROFILE:
             return {
                 ...state,
